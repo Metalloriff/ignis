@@ -1,0 +1,158 @@
+@import "./Variables.scss";
+
+:root {
+	--primary-color: #8fbcbb;
+	--secondary-color: #88c0d0;
+	
+	--primary-bg: #2e3440;
+	--secondary-bg: #3b4252;
+	--tertiary-bg: #434c5e;
+	
+	--primary-border-radius: 4px;
+	--secondary-border-radius: 7px;
+}
+
+html {
+	background-color: transparent;
+	color: white;
+
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	overflow-x: hidden;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+	'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+	sans-serif;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	margin: 0;
+	color: darken(white, 12%);
+}
+
+// I hate Firefox
+* {
+	scrollbar-width: thin;
+	scrollbar-color: $primaryColor rgba(black, 0.1);
+}
+
+.App, .Main {
+	min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+	background: rgba(black, 0.1);
+	width: 5px;
+	height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: $primaryColor;
+	border-radius: $primaryBorderRadius;
+}
+
+a {
+	color: $primaryColor;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.App {
+	background-color: rgba(black, 0.5);
+	
+	opacity: 0;
+	transition: opacity $ft;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	.LauncherModal {
+		padding: 10px;
+		
+		background-color: $primaryBG;
+		border-radius: $primaryBorderRadius;
+		
+		display: flex;
+		flex-direction: column;
+		
+		width: 30vw;
+		
+		position: relative;
+		
+		.Flex {
+			display: flex;
+		}
+		
+		> .Title {
+			font-size: 1.1em;
+			font-weight: bolder;
+			
+			margin-bottom: 10px;
+			
+			img {
+				margin-bottom: -5px;
+				margin-right: 5px;
+			}
+		}
+		
+		.LauncherModalField {
+			outline: none;
+			border: none;
+			
+			padding: 10px;
+			flex-grow: 1;
+			
+			background-color: $secondaryBG;
+			border-radius: $primaryBorderRadius;
+			color: darken(white, 15%);
+			
+			&::Placeholder {
+				color: darken(white, 30%);
+			}
+		}
+		
+		.Button {
+			cursor: pointer;
+			padding-left: 10px;
+			padding-right: 5px;
+			
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			
+			> svg {
+				font-size: 1.5em;
+			}
+		}
+		
+		.AutoComplete {
+			position: absolute;
+			top: calc(100% - 10px);
+			
+			display: flex;
+			flex-direction: column;
+			
+			background-color: $tertiaryBG;
+			border-radius: $primaryBorderRadius;
+			
+			.Item {
+				padding: 10px;
+				cursor: pointer;
+				
+				border-radius: $primaryBorderRadius;
+				
+				&:Hover {
+					background-color: $primaryHover;
+				}
+				
+				svg {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
+}
