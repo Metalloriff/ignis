@@ -67,9 +67,11 @@ const App = new class {
         // Create an event override callback
         const eventOverride = e => (e.preventDefault(), this.windowInstance.hide());
         
+        // Override the minimize and close. Hide instead
         this.windowInstance.on("minimize", eventOverride);
         this.windowInstance.on("close", eventOverride);
 
+        // Load the relevant file or URL
         if (~process.argv.indexOf("--dev"))
             await this.windowInstance.loadURL("http://localhost:3000");
         else
